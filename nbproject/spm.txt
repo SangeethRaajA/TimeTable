@@ -1,0 +1,10 @@
+refferance
+
+1. sqlite installation
+https://www.youtube.com/watch?v=wXEZZ2JT3-k
+
+2. sqlite manager installation and create db
+https://www.youtube.com/watch?v=Pni6WxHFTUg
+
+3. start with java swing (select java maven -> java application ) 
+https://www.youtube.com/watch?v=YSpqHOwYrk4
