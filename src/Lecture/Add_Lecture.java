@@ -9,6 +9,7 @@ import Service.DbConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -60,6 +61,7 @@ public class Add_Lecture extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         e_add_btn = new javax.swing.JButton();
         e_add_cancel_add_btn = new javax.swing.JButton();
+        rank_lock_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -239,11 +241,22 @@ public class Add_Lecture extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
+        rank_lock_btn.setText("Lock Rank");
+        rank_lock_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rank_lock_btnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rank_lock_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(117, 117, 117))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(87, 87, 87)
@@ -257,7 +270,9 @@ public class Add_Lecture extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(513, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
+                .addComponent(rank_lock_btn)
+                .addGap(187, 187, 187))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(93, 93, 93)
@@ -285,8 +300,15 @@ public class Add_Lecture extends javax.swing.JFrame {
 
     private void e_add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_e_add_btnActionPerformed
         // TODO add your handling code here:
-        String sql = "INSERT INTO lecture(name,emp_id,facultry,department,centre,building,level,rank) VALUES(?,?,?,?,?,?,?,?)";
-        //String sql = "INSERT INTO check(name,age)"
+          if(e_add_name.getText().isEmpty() || e_add_id.getText().isEmpty() || e_add_facultry.getText().isEmpty() || e_add_department.getText().isEmpty() || e_add_center.getText().isEmpty() || e_add_building.getText().isEmpty()){
+               String message = "All Field Should be Filled!";
+                JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
+                JOptionPane.ERROR_MESSAGE);
+
+        }
+        else{
+        String sql = "INSERT INTO lecture1(name,emp_id,facultry,department,centre,building,level,rank) VALUES(?,?,?,?,?,?,?,?)";
+       
    
            
         try{
@@ -307,7 +329,54 @@ public class Add_Lecture extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
+       }
     }//GEN-LAST:event_e_add_btnActionPerformed
+
+    private void rank_lock_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rank_lock_btnActionPerformed
+        // TODO add your handling code here:
+        String rank = "1";
+        
+        String Level = e_add_level.getSelectedItem().toString();
+        System.out.println(Level);
+        switch(Level){
+        
+            case "Professor":{
+                rank="1";
+            }
+            break;
+            case "Assistant Professor":{
+                rank="2";
+            }
+            
+            break;
+            case "Lecturer":{
+                rank="5";
+            }
+            break;
+            case "Senior Lecturer(HG)":{
+                rank="3";
+            }
+            break;
+            case "Senior Lecturer":{
+                rank="4";
+            }
+            break;
+            
+            case "Assistant Lecturer":{
+                rank="6";
+            }
+            break;
+            default:{
+                rank="7";
+            }
+        };
+        String EmpID = e_add_id.getText().toString();
+        
+        
+        e_add_rank.setText(rank+"."+EmpID);
+        
+        
+    }//GEN-LAST:event_rank_lock_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,6 +403,7 @@ public class Add_Lecture extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Add_Lecture.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -367,5 +437,6 @@ public class Add_Lecture extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton rank_lock_btn;
     // End of variables declaration//GEN-END:variables
 }

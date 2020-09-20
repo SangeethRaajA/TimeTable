@@ -5,10 +5,14 @@
  */
 package Subject;
 
+import Lecture.Edit_Lecture;
 import Service.DbConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
@@ -20,6 +24,7 @@ public class View_Subject extends javax.swing.JFrame {
 
     Connection con = null;
     PreparedStatement pst = null;
+    PreparedStatement pst1 = null;
     ResultSet result = null;
     /**
      * Creates new form View_Subject
@@ -105,6 +110,11 @@ public class View_Subject extends javax.swing.JFrame {
         jLabel3.setText("Subject Code :");
 
         s_delete_btn.setText("Delete");
+        s_delete_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                s_delete_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -149,6 +159,11 @@ public class View_Subject extends javax.swing.JFrame {
         jLabel5.setText("Subject Code :");
 
         s_edit_btn.setText("Edit");
+        s_edit_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                s_edit_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -197,6 +212,11 @@ public class View_Subject extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        subject_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                subject_tableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(subject_table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -241,6 +261,74 @@ public class View_Subject extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void s_delete_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_delete_btnActionPerformed
+        // TODO add your handling code here:
+        
+        String subCode = s_delete_code.getText();
+        
+        int i = Integer.parseInt(subCode);
+     
+        
+        String sql = "delete from subject where id = "+i;
+        
+        try{
+            pst1 = con.prepareStatement(sql);
+            pst1.execute();
+            JOptionPane.showMessageDialog(null, "Sucess Delete");
+            UpDateTable();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_s_delete_btnActionPerformed
+
+    private void s_edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_edit_btnActionPerformed
+        // TODO add your handling code here:
+        
+        int row = subject_table.getSelectedRow();
+        String id = subject_table.getModel().getValueAt(row, 0).toString();
+       
+        String o_year = subject_table.getModel().getValueAt(row, 1).toString();
+        String o_semester = subject_table.getModel().getValueAt(row, 2).toString();
+        String subject_name = subject_table.getModel().getValueAt(row, 3).toString();
+        String subject_code = subject_table.getModel().getValueAt(row, 4).toString();
+        String lecture_hours = subject_table.getModel().getValueAt(row, 5).toString();
+        String tutorial_hours = subject_table.getModel().getValueAt(row, 6).toString();
+        String lab_hours = subject_table.getModel().getValueAt(row, 7).toString();
+        String evaluation_hours = subject_table.getModel().getValueAt(row, 8).toString();
+        
+        
+        Edit_Subject edit_subject = new Edit_Subject(id,o_year,o_semester,subject_name,subject_code,lecture_hours,tutorial_hours,lab_hours,evaluation_hours);
+        edit_subject.setVisible(true);
+        edit_subject.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        Timer timer = new Timer();
+            int begin = 0;
+            int timeInterval = 4000;
+            timer.schedule(new TimerTask() {
+                int counter = 0;
+                     @Override
+                    public void run() {
+                         //call the method
+                    //  SenserModal senserModal = new SenserModal(11, co2Level, smokeLevel);
+                      UpDateTable();
+                       // s.setSenser(senserModal);
+                       // s.printSenser();
+                    counter++;
+                    
+                }
+            }, begin, timeInterval);
+        
+    }//GEN-LAST:event_s_edit_btnActionPerformed
+
+    private void subject_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subject_tableMouseClicked
+        // TODO add your handling code here:
+        int row = subject_table.getSelectedRow();
+        String selection = subject_table.getModel().getValueAt(row, 0).toString();
+            s_delete_code.setText(selection);
+            s_edit_code.setText(selection);
+    }//GEN-LAST:event_subject_tableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -266,6 +354,7 @@ public class View_Subject extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(View_Subject.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

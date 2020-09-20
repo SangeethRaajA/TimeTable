@@ -5,17 +5,42 @@
  */
 package Lecture;
 
+import Service.DbConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author vivekjeevanarajh
  */
 public class Edit_Lecture extends javax.swing.JFrame {
 
+    Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet result = null;
     /**
      * Creates new form Add_Lecture
      */
     public Edit_Lecture() {
         initComponents();
+    }
+    
+    public Edit_Lecture(String id ,String name,String emp_id,String facultry,String department,String center,String building,String level,String rank) {
+        initComponents();
+        con = DbConnection.ConnectDb();
+        
+        e_edit_name.setText(name);
+        e_edit_id.setText(emp_id);
+        e_edit_facultry.setText(facultry);
+        e_edit_department.setText(department);
+        e_edit_center.setText(center);
+        e_edit_building.setText(building);
+        e_edit_rank.setText(rank);
+        e_edit_level.setSelectedItem(level);
+        edit_id.setText(id);
+        
     }
 
     /**
@@ -29,6 +54,7 @@ public class Edit_Lecture extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        edit_id = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         e_edit_name = new javax.swing.JTextField();
@@ -60,20 +86,30 @@ public class Edit_Lecture extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("EDIT LECTURE");
 
+        edit_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit_idActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                .addComponent(edit_id, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(edit_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -94,6 +130,12 @@ public class Edit_Lecture extends javax.swing.JFrame {
         jLabel6.setText("Center :");
 
         jLabel7.setText("Building :");
+
+        e_edit_building.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                e_edit_buildingActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Level :");
 
@@ -194,6 +236,11 @@ public class Edit_Lecture extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         e_edit_btn.setText("EDIT");
+        e_edit_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                e_edit_btnActionPerformed(evt);
+            }
+        });
 
         e_edit_cancel_add_btn.setText("CANCEL");
         e_edit_cancel_add_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -215,7 +262,7 @@ public class Edit_Lecture extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(e_edit_cancel_add_btn)
@@ -241,7 +288,7 @@ public class Edit_Lecture extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(469, Short.MAX_VALUE))
+                .addContainerGap(465, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(93, 93, 93)
@@ -265,6 +312,39 @@ public class Edit_Lecture extends javax.swing.JFrame {
     private void e_edit_cancel_add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_e_edit_cancel_add_btnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_e_edit_cancel_add_btnActionPerformed
+
+    private void e_edit_buildingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_e_edit_buildingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_e_edit_buildingActionPerformed
+
+    private void e_edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_e_edit_btnActionPerformed
+        // TODO add your handling code here:
+         String sql = "update lecture1 set "
+                 +"name ='"+e_edit_name.getText().toString()+"',"
+                 +"facultry ='"+e_edit_facultry.getText().toString()+"',"
+                 +"department ='"+e_edit_department.getText()+"',"
+                 +"centre ='"+e_edit_center.getText().toString()+"',"
+                 +"building ='"+e_edit_building.getText().toString()+"',"
+                 +"level ='"+e_edit_level.getSelectedItem().toString()+"'"
+                 +"where id ="+edit_id.getText().toString();
+                 
+                  
+        
+        try{
+           
+            pst = con.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Updated Sucessfully");
+            dispose();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_e_edit_btnActionPerformed
+
+    private void edit_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edit_idActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,6 +392,7 @@ public class Edit_Lecture extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> e_edit_level;
     private javax.swing.JTextField e_edit_name;
     private javax.swing.JTextField e_edit_rank;
+    private javax.swing.JTextField edit_id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

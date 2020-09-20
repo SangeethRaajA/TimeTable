@@ -5,17 +5,44 @@
  */
 package Subject;
 
+import Service.DbConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author vivekjeevanarajh
  */
 public class Edit_Subject extends javax.swing.JFrame {
 
+    Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet result = null;
     /**
      * Creates new form Edit_Subject
      */
     public Edit_Subject() {
         initComponents();
+    }
+    
+    public Edit_Subject(String id ,String o_year,String o_semester,String subject_name,String subject_code,String lecture_hours,String tutorial_hours,String lab_hours,String evaluation_hours) {
+        initComponents();
+        
+        con = DbConnection.ConnectDb();
+        editsubjectid.setText(id);
+        s_edit_offer_year.setText(o_year);
+        s_edit_offer_semester.setText(o_semester);
+        s_edit_subject_name.setText(subject_name);
+        s_edit_subject_code.setText(subject_code);
+        s_edit_lecture_hours.setText(lecture_hours);
+        s_edit_tutorial_hours.setText(tutorial_hours);
+        s_edit_lab_hours.setText(lab_hours);
+        s_edit_evaluation_hours.setText(evaluation_hours);
+       
+       
+        
     }
 
     /**
@@ -29,6 +56,7 @@ public class Edit_Subject extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        editsubjectid = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -67,15 +95,19 @@ public class Edit_Subject extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
+                .addComponent(editsubjectid, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(editsubjectid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -256,6 +288,11 @@ public class Edit_Subject extends javax.swing.JFrame {
         s_edit_cancel_btn.setText("Cancel");
 
         s_edit_edit_btn.setText("Edit");
+        s_edit_edit_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                s_edit_edit_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -304,7 +341,7 @@ public class Edit_Subject extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 19, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         pack();
@@ -342,6 +379,34 @@ public class Edit_Subject extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_s_edit_subject_codeActionPerformed
 
+    private void s_edit_edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_edit_edit_btnActionPerformed
+        // TODO add your handling code here:
+             String sql = "update subject set "
+                 +"o_year ='"+s_edit_offer_year.getText().toString()+"',"
+                 +"o_semester ='"+s_edit_offer_semester.getText().toString()+"',"
+                 +"subject_name ='"+s_edit_subject_name.getText()+"',"
+                 +"subject_code ='"+s_edit_subject_code.getText().toString()+"',"
+                 +"lecture_hours ='"+s_edit_lecture_hours.getText().toString()+"',"
+                 +"tutorial_hours ='"+s_edit_tutorial_hours.getText().toString()+"',"
+                 +"evaluation_hours ='"+s_edit_evaluation_hours.getText().toString()+"',"
+                 +"lab_hours ='"+s_edit_lab_hours.getText().toString()+"'"
+             
+                 +"where id ="+editsubjectid.getText().toString();
+                 
+                  System.out.println(s_edit_evaluation_hours.getText().toString());
+        
+        try{
+           
+            pst = con.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Updated Sucessfully");
+            dispose();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_s_edit_edit_btnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -368,6 +433,7 @@ public class Edit_Subject extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Edit_Subject.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -378,6 +444,7 @@ public class Edit_Subject extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField editsubjectid;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

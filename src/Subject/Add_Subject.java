@@ -10,6 +10,7 @@ import Service.DbConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -365,7 +366,13 @@ public class Add_Subject extends javax.swing.JFrame {
 
     private void s_add_add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_add_add_btnActionPerformed
         // TODO add your handling code here:
-        
+        if(s_add_offer_year.getText().isEmpty() || s_add_offer_semester.getText().isEmpty() || s_add_subject_name.getText().isEmpty() || s_add_subject_code.getText().isEmpty() || s_add_lecture_hours.getText().isEmpty() || s_add_tutorial_hours.getText().isEmpty() || s_add_lab_hours.getText().isEmpty() || s_add_evaluation_hours.getText().isEmpty()){
+               String message = "All Field Should be Filled!";
+                JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
+                JOptionPane.ERROR_MESSAGE);
+
+        }
+        else{
          String sql = "INSERT INTO subject(o_year,o_semester,subject_name,subject_code,lecture_hours,tutorial_hours,lab_hours,evaluation_hours) VALUES(?,?,?,?,?,?,?,?)";
         //String sql = "INSERT INTO check(name,age)"
    
@@ -388,6 +395,8 @@ public class Add_Subject extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
+       }
+    
     }//GEN-LAST:event_s_add_add_btnActionPerformed
 
     /**
@@ -415,6 +424,7 @@ public class Add_Subject extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Add_Subject.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

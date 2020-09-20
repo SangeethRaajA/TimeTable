@@ -5,10 +5,14 @@
  */
 package Lecture;
 
+import Modals.Lecture_modal;
 import Service.DbConnection;
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
@@ -31,7 +35,7 @@ public class View_Lecture extends javax.swing.JFrame {
     }
     
     private void UpDateTable(){
-        String sql = "SELECT * FROM lecture";
+        String sql = "SELECT * FROM lecture1";
         try{
             pst = con.prepareStatement(sql);
             result = pst.executeQuery();
@@ -102,6 +106,11 @@ public class View_Lecture extends javax.swing.JFrame {
         jLabel3.setText("Employee ID :");
 
         l_delete_btn.setText("Delete");
+        l_delete_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                l_delete_btnActionPerformed(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(204, 255, 204));
         jLabel2.setFont(new java.awt.Font("Oriya MN", 1, 13)); // NOI18N
@@ -202,6 +211,11 @@ public class View_Lecture extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        lecture_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lecture_tableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(lecture_table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -246,11 +260,80 @@ public class View_Lecture extends javax.swing.JFrame {
 
     private void l_edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_l_edit_btnActionPerformed
         // TODO add your handling code here:
-        Edit_Lecture edit_lecture = new Edit_Lecture();
+        int row = lecture_table.getSelectedRow();
+        String id = lecture_table.getModel().getValueAt(row, 0).toString();
+       
+        String name = lecture_table.getModel().getValueAt(row, 1).toString();
+        String emp_id = lecture_table.getModel().getValueAt(row, 2).toString();
+        String facultry = lecture_table.getModel().getValueAt(row, 3).toString();
+        String department = lecture_table.getModel().getValueAt(row, 4).toString();
+        String center = lecture_table.getModel().getValueAt(row, 5).toString();
+        String building = lecture_table.getModel().getValueAt(row, 6).toString();
+        String level = lecture_table.getModel().getValueAt(row, 7).toString();
+        String rank = lecture_table.getModel().getValueAt(row, 8).toString();
+        
+        System.out.println(name);
+        
+         Timer timer = new Timer();
+            int begin = 0;
+            int timeInterval = 4000;
+            timer.schedule(new TimerTask() {
+                int counter = 0;
+                     @Override
+                    public void run() {
+                         //call the method
+                    //  SenserModal senserModal = new SenserModal(11, co2Level, smokeLevel);
+                      UpDateTable();
+                       // s.setSenser(senserModal);
+                       // s.printSenser();
+                    counter++;
+                    
+                }
+            }, begin, timeInterval);
+        
+   
+  
+        
+//        Lecture_modal lect_modal = new Lecture_modal();
+        
+        Edit_Lecture edit_lecture = new Edit_Lecture(id,name,emp_id,facultry,department,center,building,level,rank);
         edit_lecture.setVisible(true);
         edit_lecture.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
     }//GEN-LAST:event_l_edit_btnActionPerformed
+
+    private void l_delete_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_l_delete_btnActionPerformed
+        // TODO add your handling code here:
+        if(lecture_table.getSelectionModel().isSelectionEmpty()){
+            System.out.println("Not Selected");
+        }
+        else{
+            
+            //int a = JOptionPane.showConfirmDialog((Component)null, "Do you want to delete ?","DELETE",JOptionPane.YES_NO_OPTION);
+            String deleteId = l_delete_id.getText().toString();
+            int i = Integer.parseInt(deleteId);
+            String sql1 = "DELETE FROM lecture1 WHERE id ="+i;
+            
+            try{
+                pst= con.prepareStatement(sql1);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Deleted Successfully");
+                UpDateTable();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+            }
+            
+        }
+    }//GEN-LAST:event_l_delete_btnActionPerformed
+
+    private void lecture_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lecture_tableMouseClicked
+        // TODO add your handling code here:
+            int row = lecture_table.getSelectedRow();
+            String selection = lecture_table.getModel().getValueAt(row, 0).toString();
+            l_delete_id.setText(selection);
+            l_edit_id.setText(selection);
+    }//GEN-LAST:event_lecture_tableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -277,6 +360,7 @@ public class View_Lecture extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(View_Lecture.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
