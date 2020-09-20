@@ -10,7 +10,6 @@ import Lecture.View_Lecture;
 import Subject.Add_Subject;
 import Subject.View_Subject;
 import javax.swing.JFrame;
-
 /**
  *
  * @author vivekjeevanarajh
