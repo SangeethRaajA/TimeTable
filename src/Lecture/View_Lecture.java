@@ -197,6 +197,11 @@ public class View_Lecture extends javax.swing.JFrame {
         );
 
         l_view_cancel_btn.setText("Cancel");
+        l_view_cancel_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                l_view_cancel_btnActionPerformed(evt);
+            }
+        });
 
         lecture_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -334,6 +339,11 @@ public class View_Lecture extends javax.swing.JFrame {
             l_delete_id.setText(selection);
             l_edit_id.setText(selection);
     }//GEN-LAST:event_lecture_tableMouseClicked
+
+    private void l_view_cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_l_view_cancel_btnActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_l_view_cancel_btnActionPerformed
 
     /**
      * @param args the command line arguments
