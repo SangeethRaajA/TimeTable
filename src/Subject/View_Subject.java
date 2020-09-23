@@ -146,7 +146,7 @@ public class View_Subject extends javax.swing.JFrame {
                     .addComponent(s_delete_code, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(s_delete_btn)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 204));
@@ -179,7 +179,7 @@ public class View_Subject extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
                         .addComponent(s_edit_code, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 11, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(s_edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -196,10 +196,15 @@ public class View_Subject extends javax.swing.JFrame {
                     .addComponent(s_edit_code, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(s_edit_btn)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         s_view_cancel_btn.setText("Cancel");
+        s_view_cancel_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                s_view_cancel_btnActionPerformed(evt);
+            }
+        });
 
         subject_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -328,6 +333,11 @@ public class View_Subject extends javax.swing.JFrame {
             s_delete_code.setText(selection);
             s_edit_code.setText(selection);
     }//GEN-LAST:event_subject_tableMouseClicked
+
+    private void s_view_cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_view_cancel_btnActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_s_view_cancel_btnActionPerformed
 
     /**
      * @param args the command line arguments
