@@ -75,7 +75,7 @@ public class consecutive extends javax.swing.JFrame {
         }
         for(int i=0;i<itemCount;i++){
             LecComboBox.removeItemAt(0);
-         }
+        }
     }
     
     private void UpDateComboTute(String subjectCode){
@@ -422,7 +422,6 @@ public class consecutive extends javax.swing.JFrame {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         String sql = "INSERT INTO consecutive(subject_code,lecture,tutorial,lab) VALUES(?,?,?,?)";
-        //String sql = "INSERT INTO check(name,age)"
 
         try{
             pst = con.prepareStatement(sql);
@@ -437,7 +436,6 @@ public class consecutive extends javax.swing.JFrame {
 
             pst.execute();
             JOptionPane.showMessageDialog(null, "Inserted Successfully");
-            // dispose();
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
