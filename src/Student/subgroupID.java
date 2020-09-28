@@ -32,7 +32,6 @@ public class subgroupID extends javax.swing.JFrame {
         UpDateTable();
         UpDateComboGroupID();        
         UpDateComboSubgroup();
-
     }
     
     private void UpDateTable(){

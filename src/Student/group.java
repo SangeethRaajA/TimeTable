@@ -26,6 +26,7 @@ public class group extends javax.swing.JFrame {
     /**
      * Creates new form year
      */
+    
     public group() {
         initComponents();
         con = DbConnection.ConnectDb();
@@ -103,6 +104,12 @@ public class group extends javax.swing.JFrame {
         jLabel5.setText("Enter Details");
 
         jLabel6.setText("Group");
+
+        group_lable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                group_lableActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -423,17 +430,25 @@ public class group extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
-    private void jToggleButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton14ActionPerformed
+    private void view_lecture_sub_menu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_lecture_sub_menu4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton14ActionPerformed
+    }//GEN-LAST:event_view_lecture_sub_menu4ActionPerformed
 
-    private void jToggleButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton13ActionPerformed
+    private void group_lableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_group_lableActionPerformed
         // TODO add your handling code here:
-        SubMenu s = new SubMenu();
-        s.setVisible(true);
-        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        dispose();
-    }//GEN-LAST:event_jToggleButton13ActionPerformed
+    }//GEN-LAST:event_group_lableActionPerformed
+
+    private void jToggleButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton15ActionPerformed
+
+    private void jToggleButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton17ActionPerformed
+
+    private void jToggleButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton18ActionPerformed
 
     private void jToggleButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton16ActionPerformed
         // TODO add your handling code here:
@@ -443,21 +458,17 @@ public class group extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jToggleButton16ActionPerformed
 
-    private void jToggleButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton18ActionPerformed
+    private void jToggleButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton13ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton18ActionPerformed
+        SubMenu s = new SubMenu();
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dispose();
+    }//GEN-LAST:event_jToggleButton13ActionPerformed
 
-    private void jToggleButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton17ActionPerformed
+    private void jToggleButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton14ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton17ActionPerformed
-
-    private void jToggleButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton15ActionPerformed
-
-    private void view_lecture_sub_menu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_lecture_sub_menu4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_view_lecture_sub_menu4ActionPerformed
+    }//GEN-LAST:event_jToggleButton14ActionPerformed
 
     /**
      * @param args the command line arguments
