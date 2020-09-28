@@ -156,6 +156,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="group_lable">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="group_lableActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
