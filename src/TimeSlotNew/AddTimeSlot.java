@@ -266,6 +266,7 @@ public class AddTimeSlot extends javax.swing.JFrame {
         subject_code1 = new javax.swing.JLabel();
         duration1 = new javax.swing.JLabel();
         lectureName1 = new javax.swing.JLabel();
+        addTime = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -527,19 +528,31 @@ public class AddTimeSlot extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        addTime.setText("Add");
+        addTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addTimeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainpanelLayout = new javax.swing.GroupLayout(mainpanel);
         mainpanel.setLayout(mainpanelLayout);
         mainpanelLayout.setHorizontalGroup(
             mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainpanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(StudentGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(addBut)
+                .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainpanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(StudentGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(addBut))
+                    .addGroup(mainpanelLayout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(addTime)))
                 .addContainerGap(419, Short.MAX_VALUE))
         );
         mainpanelLayout.setVerticalGroup(
@@ -552,7 +565,9 @@ public class AddTimeSlot extends javax.swing.JFrame {
                     .addComponent(addBut))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addTime)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -639,6 +654,52 @@ public class AddTimeSlot extends javax.swing.JFrame {
         UpDateComboDays(batchComboBox.getSelectedItem().toString());
     }//GEN-LAST:event_batchComboBoxMouseClicked
 
+    private void addTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTimeActionPerformed
+        // TODO add your handling code here:
+             // TODO add your handling code here:
+        //add timeSlots---db timetable
+        
+        String sql = "INSERT into timetable(session,room,studentGroup,batch,day,timeSlot) VALUES(?,?,?,?,?,?)";
+        
+        //String column_X = date;
+        //String timeslot_y = timeslot;
+        //String session_z = session;
+        
+        // String sql = "insert into dashtable(column_X) values(session_z) where timeslot=timeslot_y";
+        try{
+            pst = conn.prepareStatement(sql);
+            String t_tag = tag.getText().toString();
+            String t_group = group.getText().toString();
+            String t_subject = subject.getText().toString();
+            String t_subject_code = subject_code.getText().toString();
+            String t_duration = duration.getText().toString();
+            String t_lectureName = lectureName.getText().toString();
+            
+            pst.setString(1,t_tag+"-"+t_group+"-"+t_subject+"-"+t_subject_code+"-"+t_duration+"-"+t_lectureName);
+            
+            String t_roomText = roomText.getText().toString();
+            String t_StudentGroup = StudentGroup.getSelectedItem().toString();
+            String t_batchComboBox = batchComboBox.getSelectedItem().toString();
+            String t_DayComboBox = DayComboBox.getSelectedItem().toString();
+            String t_timeComboBox = timeComboBox.getSelectedItem().toString();
+            
+            
+            pst.setString(2, t_roomText);
+            pst.setString(3, t_StudentGroup);
+            pst.setString(4, t_batchComboBox);
+            pst.setString(5, t_DayComboBox);
+            pst.setString(6, t_timeComboBox);
+            
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Inserted Successfully");
+            
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_addTimeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -679,6 +740,7 @@ public class AddTimeSlot extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> DayComboBox;
     private javax.swing.JComboBox<String> StudentGroup;
     private javax.swing.JButton addBut;
+    private javax.swing.JButton addTime;
     private javax.swing.JComboBox<String> batchComboBox;
     private javax.swing.JLabel duration;
     private javax.swing.JLabel duration1;
