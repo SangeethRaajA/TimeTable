@@ -184,14 +184,10 @@ public class AddTimeSlot extends javax.swing.JFrame {
             while(result.next()){
                 batchComboBox.addItem(result.getString("batch"));
             }
-        }
-        
+        }        
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-//          UpDateComboDays(batchComboBox.getSelectedItem().toString());
-
-//        UpDateComboDays();
     }
     
      private void UpDateComboDays(String setBatch ){
@@ -199,41 +195,34 @@ public class AddTimeSlot extends javax.swing.JFrame {
          for(int i=0;i<itemCount;i++){
              DayComboBox.removeItemAt(0);                         
          }
-//        String setBatch = batchComboBox.getSelectedItem().toString();
-        
         String sql = "SELECT * FROM day where batch='"+setBatch+"'";
         try{
             pst = conn.prepareStatement(sql);
-            result = pst.executeQuery();
-            
-//            if(result.next()){
-//                DayComboBox.addItem(result.getString("days"));
-//            }else if(result.wasNull()){
-//                DayComboBox.removeAllItems();
-//            }
-            
-//            String Date = DayComboBox.getSelectedItem().toString();
-//            
-//            if(result.next()){
-////                DayComboBox.setSelectedItem(Date);
-//                  DayComboBox.addItem(result.getString("days"));
-//            }else if(result.wasNull()){
-//                DayComboBox.removeAllItems();
-//            }
-            
+            result = pst.executeQuery();            
             while(result.next()){
                 DayComboBox.addItem(result.getString("days"));
             }
-            
-//            String out = result.getString("room");
-//            
-//            if(result.next()){
-//                roomText.setText(out);
-//            }else if(result.wasNull()){
-//                //not in use
-//                roomText.removeAll();
-//            }
+
         }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+     
+     private void UpDateComboTimeslot(String setBatch){
+         int itemCount = timeComboBox.getItemCount();
+         for(int i=0;i<itemCount;i++){
+             timeComboBox.removeItemAt(0);                         
+         }
+        String sql = "SELECT * FROM timeSlot where batch='"+setBatch+"'";
+        try{
+            pst = conn.prepareStatement(sql);
+            result = pst.executeQuery();
+            while(result.next()){
+                timeComboBox.addItem(result.getString("time_slot"));
+            }
+        }
+        
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
@@ -250,23 +239,33 @@ public class AddTimeSlot extends javax.swing.JFrame {
         mainpanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         StudentGroup = new javax.swing.JComboBox<>();
+        addBut = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        roomText = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         setSession = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
         tag = new javax.swing.JLabel();
         group = new javax.swing.JLabel();
         subject = new javax.swing.JLabel();
         subject_code = new javax.swing.JLabel();
         duration = new javax.swing.JLabel();
         lectureName = new javax.swing.JLabel();
-        addBut = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        roomText = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
         batchComboBox = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         DayComboBox = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        timeComboBox = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        tag1 = new javax.swing.JLabel();
+        group1 = new javax.swing.JLabel();
+        subject1 = new javax.swing.JLabel();
+        subject_code1 = new javax.swing.JLabel();
+        duration1 = new javax.swing.JLabel();
+        lectureName1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -287,6 +286,17 @@ public class AddTimeSlot extends javax.swing.JFrame {
                 StudentGroupActionPerformed(evt);
             }
         });
+
+        addBut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        addBut.setText("ADD");
+        addBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Room:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Session:");
@@ -322,95 +332,25 @@ public class AddTimeSlot extends javax.swing.JFrame {
         lectureName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lectureName.setText("Lecturer");
 
-        addBut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        addBut.setText("ADD");
-        addBut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Batch:");
-
-        batchComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        batchComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                batchComboBoxItemStateChanged(evt);
-            }
-        });
-        batchComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                batchComboBoxActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Room:");
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("Days:");
-
-        DayComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setText("TimeSlot:");
-
-        jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        javax.swing.GroupLayout mainpanelLayout = new javax.swing.GroupLayout(mainpanel);
-        mainpanel.setLayout(mainpanelLayout);
-        mainpanelLayout.setHorizontalGroup(
-            mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainpanelLayout.createSequentialGroup()
-                .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainpanelLayout.createSequentialGroup()
-                        .addGap(411, 411, 411)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(StudentGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(addBut))
-                    .addGroup(mainpanelLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tag)
-                            .addComponent(group)
-                            .addComponent(subject)
-                            .addComponent(subject_code)
-                            .addComponent(duration)
-                            .addGroup(mainpanelLayout.createSequentialGroup()
-                                .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lectureName)
-                                        .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7)))
-                                    .addComponent(jLabel3))
-                                .addGap(47, 47, 47)
-                                .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(setSession, 0, 157, Short.MAX_VALUE)
-                                    .addComponent(roomText)
-                                    .addComponent(batchComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(DayComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(447, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tag)
+                    .addComponent(group)
+                    .addComponent(subject)
+                    .addComponent(subject_code)
+                    .addComponent(duration)
+                    .addComponent(lectureName))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
-        mainpanelLayout.setVerticalGroup(
-            mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainpanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(StudentGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addBut))
-                .addGap(44, 44, 44)
-                .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(setSession, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(tag)
                 .addGap(2, 2, 2)
                 .addComponent(group)
@@ -422,27 +362,197 @@ public class AddTimeSlot extends javax.swing.JFrame {
                 .addComponent(duration)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lectureName)
-                .addGap(33, 33, 33)
-                .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainpanelLayout.createSequentialGroup()
-                        .addComponent(roomText, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainpanelLayout.createSequentialGroup()
-                                .addGap(38, 38, 38)
+                .addContainerGap())
+        );
+
+        batchComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        batchComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                batchComboBoxItemStateChanged(evt);
+            }
+        });
+        batchComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                batchComboBoxMouseClicked(evt);
+            }
+        });
+        batchComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                batchComboBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setText("Days:");
+
+        DayComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setText("TimeSlot:");
+
+        timeComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("Batch:");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setText("Select Details");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addGap(204, 204, 204))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
                                 .addComponent(jLabel4))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(batchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addGap(70, 70, 70)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(batchComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(DayComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(timeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel8))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel4)
+                    .addComponent(batchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel6)
                     .addComponent(DayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
-                .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                    .addComponent(timeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
+        );
+
+        tag1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        tag1.setText("Tag");
+
+        group1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        group1.setText("Group");
+
+        subject1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        subject1.setText("Subject");
+
+        subject_code1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        subject_code1.setText("Subject Code");
+
+        duration1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        duration1.setText("Duration");
+
+        lectureName1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lectureName1.setText("Lecturer");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel5))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel3)))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(roomText, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(setSession, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tag1)
+                    .addComponent(group1)
+                    .addComponent(subject1)
+                    .addComponent(subject_code1)
+                    .addComponent(duration1)
+                    .addComponent(lectureName1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(setSession, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tag1)
+                        .addGap(2, 2, 2)
+                        .addComponent(group1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(subject1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(subject_code1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(duration1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lectureName1)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(roomText, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout mainpanelLayout = new javax.swing.GroupLayout(mainpanel);
+        mainpanel.setLayout(mainpanelLayout);
+        mainpanelLayout.setHorizontalGroup(
+            mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainpanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(StudentGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(addBut)
+                .addContainerGap(419, Short.MAX_VALUE))
+        );
+        mainpanelLayout.setVerticalGroup(
+            mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainpanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(mainpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(StudentGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addBut))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -515,15 +625,19 @@ public class AddTimeSlot extends javax.swing.JFrame {
 
     private void batchComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batchComboBoxActionPerformed
         // TODO add your handling code here:
-//        UpDateComboDays(batchComboBox.getSelectedItem().toString());
         
     }//GEN-LAST:event_batchComboBoxActionPerformed
 
     private void batchComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_batchComboBoxItemStateChanged
         // TODO add your handling code here:
-//        UpDateComboDays(batchComboBox.getSelectedItem().toString());
 
     }//GEN-LAST:event_batchComboBoxItemStateChanged
+
+    private void batchComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_batchComboBoxMouseClicked
+        // TODO add your handling code here:
+        UpDateComboTimeslot(batchComboBox.getSelectedItem().toString());
+        UpDateComboDays(batchComboBox.getSelectedItem().toString());
+    }//GEN-LAST:event_batchComboBoxMouseClicked
 
     /**
      * @param args the command line arguments
@@ -567,8 +681,9 @@ public class AddTimeSlot extends javax.swing.JFrame {
     private javax.swing.JButton addBut;
     private javax.swing.JComboBox<String> batchComboBox;
     private javax.swing.JLabel duration;
+    private javax.swing.JLabel duration1;
     private javax.swing.JLabel group;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JLabel group1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -576,13 +691,22 @@ public class AddTimeSlot extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lectureName;
+    private javax.swing.JLabel lectureName1;
     private javax.swing.JPanel mainpanel;
     private javax.swing.JTextField roomText;
     private javax.swing.JComboBox<String> setSession;
     private javax.swing.JLabel subject;
+    private javax.swing.JLabel subject1;
     private javax.swing.JLabel subject_code;
+    private javax.swing.JLabel subject_code1;
     private javax.swing.JLabel tag;
+    private javax.swing.JLabel tag1;
+    private javax.swing.JComboBox<String> timeComboBox;
     // End of variables declaration//GEN-END:variables
 }
