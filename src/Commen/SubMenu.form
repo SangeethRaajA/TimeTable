@@ -273,7 +273,7 @@
                               <Component id="jToggleButton1" linkSize="5" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                               <Component id="jToggleButton4" linkSize="5" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                               <Component id="jToggleButton3" linkSize="5" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Component id="jToggleButton5" linkSize="5" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="session_menu_btn" linkSize="5" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                               <Component id="jToggleButton6" linkSize="5" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jToggleButton2" linkSize="5" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
@@ -293,9 +293,9 @@
                       <Component id="jToggleButton4" linkSize="6" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jToggleButton6" linkSize="6" min="-2" pref="39" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="jToggleButton5" linkSize="6" min="-2" pref="39" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="session_menu_btn" linkSize="6" min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jToggleButton3" linkSize="6" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -335,12 +335,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton4ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JToggleButton" name="jToggleButton5">
+            <Component class="javax.swing.JToggleButton" name="session_menu_btn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="SESSION"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton5ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="session_menu_btnActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton6">

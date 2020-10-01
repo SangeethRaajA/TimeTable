@@ -41,6 +41,8 @@ public class Edit_Lecture extends javax.swing.JFrame {
         e_edit_level.setSelectedItem(level);
         edit_id.setText(id);
         
+        e_edit_id.setEditable(false);
+        
     }
 
     /**
@@ -148,6 +150,11 @@ public class Edit_Lecture extends javax.swing.JFrame {
         });
 
         e_edit_level.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professor", "Assistant Professor", "Senior Lecturer(HG) ", "Senior Lecturer", "Lecturer", "Assistant Lecturer", "Instructors" }));
+        e_edit_level.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                e_edit_levelItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -345,6 +352,51 @@ public class Edit_Lecture extends javax.swing.JFrame {
     private void edit_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edit_idActionPerformed
+
+    private void e_edit_levelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_e_edit_levelItemStateChanged
+        // TODO add your handling code here:
+        
+          String rank = "1";
+        
+        String Level = e_edit_level.getSelectedItem().toString();
+        System.out.println(Level);
+        switch(Level){
+        
+            case "Professor":{
+                rank="1";
+            }
+            break;
+            case "Assistant Professor":{
+                rank="2";
+            }
+            
+            break;
+            case "Lecturer":{
+                rank="5";
+            }
+            break;
+            case "Instructors":{
+                rank="7";
+            }
+            break;
+            case "Senior Lecturer":{
+                rank="4";
+            }
+            break;
+            
+            case "Assistant Lecturer":{
+                rank="6";
+            }
+            break;
+            default:{
+                rank="3";
+            }
+        };
+        String EmpID = e_edit_id.getText().toString();
+        
+        
+        e_edit_rank.setText(rank+"."+EmpID);
+    }//GEN-LAST:event_e_edit_levelItemStateChanged
 
     /**
      * @param args the command line arguments

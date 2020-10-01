@@ -6,6 +6,8 @@
 package Subject;
 
 import Service.DbConnection;
+import com.sun.glass.events.KeyEvent;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,7 +43,7 @@ public class Edit_Subject extends javax.swing.JFrame {
         s_edit_lab_hours.setText(lab_hours);
         s_edit_evaluation_hours.setText(evaluation_hours);
        
-       
+       editsubjectid.setEditable(false);
         
     }
 
@@ -128,10 +130,20 @@ public class Edit_Subject extends javax.swing.JFrame {
                 s_edit_lecture_hoursActionPerformed(evt);
             }
         });
+        s_edit_lecture_hours.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                s_edit_lecture_hoursKeyPressed(evt);
+            }
+        });
 
         s_edit_tutorial_hours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 s_edit_tutorial_hoursActionPerformed(evt);
+            }
+        });
+        s_edit_tutorial_hours.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                s_edit_tutorial_hoursKeyPressed(evt);
             }
         });
 
@@ -140,10 +152,20 @@ public class Edit_Subject extends javax.swing.JFrame {
                 s_edit_lab_hoursActionPerformed(evt);
             }
         });
+        s_edit_lab_hours.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                s_edit_lab_hoursKeyPressed(evt);
+            }
+        });
 
         s_edit_evaluation_hours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 s_edit_evaluation_hoursActionPerformed(evt);
+            }
+        });
+        s_edit_evaluation_hours.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                s_edit_evaluation_hoursKeyPressed(evt);
             }
         });
 
@@ -213,12 +235,22 @@ public class Edit_Subject extends javax.swing.JFrame {
                 s_edit_offer_yearActionPerformed(evt);
             }
         });
+        s_edit_offer_year.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                s_edit_offer_yearKeyPressed(evt);
+            }
+        });
 
         jLabel3.setText("Offered Semester :");
 
         s_edit_offer_semester.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 s_edit_offer_semesterActionPerformed(evt);
+            }
+        });
+        s_edit_offer_semester.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                s_edit_offer_semesterKeyPressed(evt);
             }
         });
 
@@ -406,6 +438,89 @@ public class Edit_Subject extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_s_edit_edit_btnActionPerformed
+
+    private void s_edit_offer_yearKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_edit_offer_yearKeyPressed
+             int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACKSPACE)){
+            s_edit_offer_year.setEditable(true);
+            s_edit_offer_year.setBackground(Color.white);
+        }
+        else{
+            s_edit_offer_year.setEditable(false);
+            s_edit_offer_year.setBackground(Color.red);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_s_edit_offer_yearKeyPressed
+
+    private void s_edit_offer_semesterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_edit_offer_semesterKeyPressed
+        // TODO add your handling code here:
+                int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACKSPACE)){
+            s_edit_offer_semester.setEditable(true);
+            s_edit_offer_semester.setBackground(Color.white);
+        }
+        else{
+            s_edit_offer_semester.setEditable(false);
+            s_edit_offer_semester.setBackground(Color.red);
+        } 
+    }//GEN-LAST:event_s_edit_offer_semesterKeyPressed
+
+    private void s_edit_lecture_hoursKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_edit_lecture_hoursKeyPressed
+        // TODO add your handling code here:
+                 int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACKSPACE)){
+            s_edit_lecture_hours.setEditable(true);
+            s_edit_lecture_hours.setBackground(Color.white);
+        }
+        else{
+            s_edit_lecture_hours.setEditable(false);
+            s_edit_lecture_hours.setBackground(Color.red);
+        } 
+    }//GEN-LAST:event_s_edit_lecture_hoursKeyPressed
+
+    private void s_edit_tutorial_hoursKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_edit_tutorial_hoursKeyPressed
+        // TODO add your handling code here:
+        int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACKSPACE)){
+            s_edit_tutorial_hours.setEditable(true);
+            s_edit_tutorial_hours.setBackground(Color.white);
+        }
+        else{
+            s_edit_tutorial_hours.setEditable(false);
+            s_edit_tutorial_hours.setBackground(Color.red);
+        } 
+    }//GEN-LAST:event_s_edit_tutorial_hoursKeyPressed
+
+    private void s_edit_lab_hoursKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_edit_lab_hoursKeyPressed
+        // TODO add your handling code here:
+           int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACKSPACE)){
+            s_edit_lab_hours.setEditable(true);
+            s_edit_lab_hours.setBackground(Color.white);
+        }
+        else{
+            s_edit_lab_hours.setEditable(false);
+            s_edit_lab_hours.setBackground(Color.red);
+        } 
+    }//GEN-LAST:event_s_edit_lab_hoursKeyPressed
+
+    private void s_edit_evaluation_hoursKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_edit_evaluation_hoursKeyPressed
+        // TODO add your handling code here:
+             int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACKSPACE)){
+            s_edit_evaluation_hours.setEditable(true);
+            s_edit_evaluation_hours.setBackground(Color.white);
+        }
+        else{
+            s_edit_evaluation_hours.setEditable(false);
+            s_edit_evaluation_hours.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_s_edit_evaluation_hoursKeyPressed
 
     /**
      * @param args the command line arguments

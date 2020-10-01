@@ -247,21 +247,25 @@
             <Component class="javax.swing.JTextField" name="s_add_lecture_hours">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="s_add_lecture_hoursActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="s_add_lecture_hoursKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="s_add_tutorial_hours">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="s_add_tutorial_hoursActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="s_add_tutorial_hoursKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="s_add_lab_hours">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="s_add_lab_hoursActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="s_add_lab_hoursKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="s_add_evaluation_hours">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="s_add_evaluation_hoursActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="s_add_evaluation_hoursKeyPressed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -344,6 +348,7 @@
             <Component class="javax.swing.JTextField" name="s_add_offer_year">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="s_add_offer_yearActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="s_add_offer_yearKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
@@ -354,6 +359,7 @@
             <Component class="javax.swing.JTextField" name="s_add_offer_semester">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="s_add_offer_semesterActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="s_add_offer_semesterKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">

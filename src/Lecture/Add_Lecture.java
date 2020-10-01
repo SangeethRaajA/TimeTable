@@ -6,6 +6,8 @@
 package Lecture;
 
 import Service.DbConnection;
+import com.sun.glass.events.KeyEvent;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,6 +30,8 @@ public class Add_Lecture extends javax.swing.JFrame {
         initComponents();
         
         con = DbConnection.ConnectDb();
+        
+        e_add_rank.setEditable(false);
     }
 
     /**
@@ -61,7 +65,6 @@ public class Add_Lecture extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         e_add_btn = new javax.swing.JButton();
         e_add_cancel_add_btn = new javax.swing.JButton();
-        rank_lock_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +103,12 @@ public class Add_Lecture extends javax.swing.JFrame {
 
         jLabel3.setText("Employee ID :");
 
+        e_add_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                e_add_idKeyPressed(evt);
+            }
+        });
+
         jLabel4.setText("Facultry :");
 
         jLabel5.setText("Department :");
@@ -119,6 +128,11 @@ public class Add_Lecture extends javax.swing.JFrame {
         });
 
         e_add_level.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professor", "Assistant Professor", "Senior Lecturer(HG) ", "Senior Lecturer", "Lecturer", "Assistant Lecturer", "Instructors" }));
+        e_add_level.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                e_add_levelItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -241,22 +255,11 @@ public class Add_Lecture extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
-        rank_lock_btn.setText("Lock Rank");
-        rank_lock_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rank_lock_btnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rank_lock_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(87, 87, 87)
@@ -270,9 +273,7 @@ public class Add_Lecture extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
-                .addComponent(rank_lock_btn)
-                .addGap(187, 187, 187))
+                .addContainerGap(513, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(93, 93, 93)
@@ -332,8 +333,23 @@ public class Add_Lecture extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_e_add_btnActionPerformed
 
-    private void rank_lock_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rank_lock_btnActionPerformed
+    private void e_add_idKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_e_add_idKeyPressed
         // TODO add your handling code here:
+         int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACKSPACE)){
+            e_add_id.setEditable(true);
+            e_add_id.setBackground(Color.white);
+        }
+        else{
+            e_add_id.setEditable(false);
+            e_add_id.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_e_add_idKeyPressed
+
+    private void e_add_levelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_e_add_levelItemStateChanged
+        // TODO add your handling code here:
+        
         String rank = "1";
         
         String Level = e_add_level.getSelectedItem().toString();
@@ -353,8 +369,8 @@ public class Add_Lecture extends javax.swing.JFrame {
                 rank="5";
             }
             break;
-            case "Senior Lecturer(HG)":{
-                rank="3";
+            case "Instructors":{
+                rank="7";
             }
             break;
             case "Senior Lecturer":{
@@ -367,7 +383,7 @@ public class Add_Lecture extends javax.swing.JFrame {
             }
             break;
             default:{
-                rank="7";
+                rank="3";
             }
         };
         String EmpID = e_add_id.getText().toString();
@@ -375,8 +391,7 @@ public class Add_Lecture extends javax.swing.JFrame {
         
         e_add_rank.setText(rank+"."+EmpID);
         
-        
-    }//GEN-LAST:event_rank_lock_btnActionPerformed
+    }//GEN-LAST:event_e_add_levelItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -437,6 +452,5 @@ public class Add_Lecture extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton rank_lock_btn;
     // End of variables declaration//GEN-END:variables
 }
