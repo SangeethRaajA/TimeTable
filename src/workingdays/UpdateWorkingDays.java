@@ -33,13 +33,11 @@ public class UpdateWorkingDays extends javax.swing.JFrame {
         show_user();
     }
 
-     public ArrayList<User> userList(){
+    public ArrayList<User> userList(){
         ArrayList<User> usersList = new ArrayList<>();
         try{
-           //Class.forName("com.mysql.jdbc.Driver");
            
-           //Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/tms","root","");
-           String query = "SELECT* FROM workingdays";
+           String query = "SELECT * FROM workingdays";
            Statement st = conn.createStatement();
            ResultSet rs = st.executeQuery(query);
            User user;
@@ -59,7 +57,6 @@ public class UpdateWorkingDays extends javax.swing.JFrame {
         Object[] row = new Object[7];
         for(int i=0;i<list.size();i++){
             row[0]=list.get(i).getsemID();
-//            row[1]=list.get(i).getempName();
             row[1]=list.get(i).getdayNo();
             row[2]=list.get(i).getwDays();
             row[3]=list.get(i).getwTimePerDay();

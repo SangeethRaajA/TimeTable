@@ -80,7 +80,7 @@ public class consecutive extends javax.swing.JFrame {
     
     private void UpDateComboTute(String subjectCode){
         int itemCount = TuteComboBox.getItemCount();
-        String sql = "select session_id FROM session1 where tag = 'tutorial' AND subject_code= '"+subjectCode+"'";
+        String sql = "select session_id FROM session1 where tag = 'tute' AND subject_code= '"+subjectCode+"'";
         try{
             pst = con.prepareStatement(sql);
             result = pst.executeQuery();
@@ -99,7 +99,7 @@ public class consecutive extends javax.swing.JFrame {
     
     private void UpDateComboLab(String subjectCode){
         int itemCount = LabComboBox.getItemCount();
-        String sql = "select session_id FROM session1 where tag = 'lab' AND subject_code= '"+subjectCode+"'";
+        String sql = "select * FROM session1 where tag = 'labs' AND subject_code= '"+subjectCode+"'";
         try{
             pst = con.prepareStatement(sql);
             result = pst.executeQuery();
