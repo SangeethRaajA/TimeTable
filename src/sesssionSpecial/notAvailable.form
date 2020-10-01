@@ -194,7 +194,7 @@
                                       <Component id="jScrollPane1" min="-2" pref="89" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jPanel17" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="104" max="32767" attributes="0"/>
+                                      <EmptySpace pref="69" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -229,60 +229,51 @@
                               <Layout>
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                                                          <Component id="label19" min="-2" pref="74" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="label15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="label20" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel5" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                              <Component id="label19" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                  <Component id="dateComboBox3" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                                                  <Component id="lecComboBox" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="label15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="label20" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace pref="17" max="32767" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Group type="102" alignment="0" attributes="0">
-                                                                  <Component id="L1" min="-2" pref="54" max="-2" attributes="0"/>
-                                                                  <EmptySpace max="-2" attributes="0"/>
-                                                                  <Component id="L2" min="-2" pref="50" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <Group type="102" alignment="0" attributes="0">
-                                                                  <Component id="L4" max="32767" attributes="0"/>
-                                                                  <EmptySpace max="-2" attributes="0"/>
-                                                                  <Component id="L5" min="-2" pref="50" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="L1" min="-2" pref="54" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="L6" alignment="0" pref="50" max="32767" attributes="0"/>
-                                                              <Component id="L3" alignment="0" max="32767" attributes="0"/>
-                                                          </Group>
+                                                          <Component id="L2" min="-2" pref="50" max="-2" attributes="0"/>
                                                       </Group>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                          <Component id="lecComboBox" min="-2" pref="166" max="-2" attributes="0"/>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="L4" max="32767" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <Component id="L5" min="-2" pref="50" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="L6" alignment="0" pref="50" max="32767" attributes="0"/>
+                                                      <Component id="L3" alignment="0" max="32767" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="184" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -297,32 +288,31 @@
                                                   <Component id="label19" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="label15" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="32767" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="label20" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                                                  <Component id="L4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="L5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="L6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                                      </Group>
+                                                      <Component id="label15" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                                           <Component id="L3" alignment="3" min="-2" max="-2" attributes="0"/>
                                                           <Component id="L2" alignment="3" min="-2" max="-2" attributes="0"/>
                                                           <Component id="L1" alignment="3" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="label20" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                                          <Component id="L4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="L5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="L6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="lecComboBox" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="lecComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="2" attributes="0">
+                                              <Component id="dateComboBox3" alignment="2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel5" alignment="2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace pref="14" max="32767" attributes="0"/>
                                           <Component id="jButton9" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -334,6 +324,9 @@
                                   <Properties>
                                     <Property name="text" type="java.lang.String" value="Add"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton9ActionPerformed"/>
+                                  </Events>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel14">
                                   <Properties>
@@ -494,6 +487,32 @@
                                     <Property name="text" type="java.lang.String" value="Ending Time"/>
                                   </Properties>
                                 </Component>
+                                <Component class="javax.swing.JComboBox" name="dateComboBox3">
+                                  <Properties>
+                                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                      <StringArray count="7">
+                                        <StringItem index="0" value="Monday"/>
+                                        <StringItem index="1" value="Tuesday"/>
+                                        <StringItem index="2" value="Wednesday"/>
+                                        <StringItem index="3" value="Thursday"/>
+                                        <StringItem index="4" value="Friday"/>
+                                        <StringItem index="5" value="Saturday"/>
+                                        <StringItem index="6" value="Sunday"/>
+                                      </StringArray>
+                                    </Property>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="jLabel5">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="12" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Date"/>
+                                  </Properties>
+                                </Component>
                               </SubComponents>
                             </Container>
                           </SubComponents>
@@ -530,7 +549,7 @@
                                       <Component id="jScrollPane3" min="-2" pref="89" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="105" max="32767" attributes="0"/>
+                                      <EmptySpace pref="69" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -565,60 +584,51 @@
                               <Layout>
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                                                          <Component id="label18" min="-2" pref="74" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="label11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="label12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel4" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                              <Component id="label18" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                  <Component id="dateComboBox2" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                                                  <Component id="sesComboBox" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="label11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="label12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace pref="17" max="32767" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Group type="102" alignment="0" attributes="0">
-                                                                  <Component id="S1" min="-2" pref="54" max="-2" attributes="0"/>
-                                                                  <EmptySpace max="-2" attributes="0"/>
-                                                                  <Component id="S2" min="-2" pref="50" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <Group type="102" alignment="0" attributes="0">
-                                                                  <Component id="S4" max="32767" attributes="0"/>
-                                                                  <EmptySpace max="-2" attributes="0"/>
-                                                                  <Component id="S5" min="-2" pref="50" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="S1" min="-2" pref="54" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="S6" alignment="0" pref="50" max="32767" attributes="0"/>
-                                                              <Component id="S3" alignment="0" max="32767" attributes="0"/>
-                                                          </Group>
+                                                          <Component id="S2" min="-2" pref="50" max="-2" attributes="0"/>
                                                       </Group>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                          <Component id="sesComboBox" min="-2" pref="166" max="-2" attributes="0"/>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="S4" max="32767" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <Component id="S5" min="-2" pref="50" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="S6" alignment="0" pref="50" max="32767" attributes="0"/>
+                                                      <Component id="S3" alignment="0" max="32767" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="184" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -633,19 +643,7 @@
                                                   <Component id="label18" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="label11" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="32767" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="label12" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                                                  <Component id="S4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="S5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="S6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                                      </Group>
+                                                      <Component id="label11" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                                           <Component id="S3" alignment="3" min="-2" max="-2" attributes="0"/>
                                                           <Component id="S2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -653,12 +651,23 @@
                                                       </Group>
                                                   </Group>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="sesComboBox" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                                              <Component id="sesComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="label12" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                                  <Component id="S4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="S5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="S6" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="2" attributes="0">
+                                              <Component id="dateComboBox2" alignment="2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel4" alignment="2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace pref="15" max="32767" attributes="0"/>
                                           <Component id="jButton8" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -670,6 +679,9 @@
                                   <Properties>
                                     <Property name="text" type="java.lang.String" value="Add"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+                                  </Events>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel13">
                                   <Properties>
@@ -830,6 +842,32 @@
                                     <Property name="text" type="java.lang.String" value="Ending Time"/>
                                   </Properties>
                                 </Component>
+                                <Component class="javax.swing.JComboBox" name="dateComboBox2">
+                                  <Properties>
+                                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                      <StringArray count="7">
+                                        <StringItem index="0" value="Monday"/>
+                                        <StringItem index="1" value="Tuesday"/>
+                                        <StringItem index="2" value="Wednesday"/>
+                                        <StringItem index="3" value="Thursday"/>
+                                        <StringItem index="4" value="Friday"/>
+                                        <StringItem index="5" value="Saturday"/>
+                                        <StringItem index="6" value="Sunday"/>
+                                      </StringArray>
+                                    </Property>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="jLabel4">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="12" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Date"/>
+                                  </Properties>
+                                </Component>
                               </SubComponents>
                             </Container>
                           </SubComponents>
@@ -866,7 +904,7 @@
                                       <Component id="jScrollPane4" min="-2" pref="89" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="105" max="32767" attributes="0"/>
+                                      <EmptySpace pref="67" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -902,59 +940,50 @@
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="185" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel2" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                              <Component id="label10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="label8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="label17" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="groupComboBox" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
+                                              <Component id="dateComboBox" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace pref="112" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                                                          <Component id="label17" min="-2" pref="74" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="G1" min="-2" pref="54" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="label8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="label10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace pref="17" max="32767" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Group type="102" alignment="0" attributes="0">
-                                                                  <Component id="G1" min="-2" pref="54" max="-2" attributes="0"/>
-                                                                  <EmptySpace max="-2" attributes="0"/>
-                                                                  <Component id="G2" min="-2" pref="50" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <Group type="102" alignment="0" attributes="0">
-                                                                  <Component id="G4" max="32767" attributes="0"/>
-                                                                  <EmptySpace max="-2" attributes="0"/>
-                                                                  <Component id="G5" min="-2" pref="50" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="G6" alignment="0" pref="50" max="32767" attributes="0"/>
-                                                              <Component id="G3" alignment="0" max="32767" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                          <Component id="groupComboBox" min="-2" pref="166" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
+                                                  <Component id="G2" min="-2" pref="50" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="G4" max="32767" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="G5" min="-2" pref="50" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="G6" alignment="0" pref="50" max="32767" attributes="0"/>
+                                              <Component id="G3" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -966,35 +995,34 @@
                                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="label17" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="G3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="G2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="G1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="label8" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="32767" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="label10" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                                                  <Component id="G4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="G5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="G6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                                          <Component id="G3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="G2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="G1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="G4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="G5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="G6" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="groupComboBox" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                                              <Component id="groupComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="label17" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="label8" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="label10" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="2" attributes="0">
+                                              <Component id="dateComboBox" alignment="2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel2" alignment="2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace pref="22" max="32767" attributes="0"/>
                                           <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -1006,6 +1034,9 @@
                                   <Properties>
                                     <Property name="text" type="java.lang.String" value="Add"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+                                  </Events>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel10">
                                   <Properties>
@@ -1169,6 +1200,32 @@
                                     <Property name="text" type="java.lang.String" value="Ending Time"/>
                                   </Properties>
                                 </Component>
+                                <Component class="javax.swing.JLabel" name="jLabel2">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="12" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Date"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JComboBox" name="dateComboBox">
+                                  <Properties>
+                                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                      <StringArray count="7">
+                                        <StringItem index="0" value="Monday"/>
+                                        <StringItem index="1" value="Tuesday"/>
+                                        <StringItem index="2" value="Wednesday"/>
+                                        <StringItem index="3" value="Thursday"/>
+                                        <StringItem index="4" value="Friday"/>
+                                        <StringItem index="5" value="Saturday"/>
+                                        <StringItem index="6" value="Sunday"/>
+                                      </StringArray>
+                                    </Property>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                                  </AuxValues>
+                                </Component>
                               </SubComponents>
                             </Container>
                           </SubComponents>
@@ -1205,7 +1262,7 @@
                                       <Component id="jScrollPane2" min="-2" pref="89" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="103" max="32767" attributes="0"/>
+                                      <EmptySpace pref="62" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1241,59 +1298,50 @@
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                                                          <Component id="label16" min="-2" pref="74" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="label6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="label4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="label16" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                              <Component id="jLabel3" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                  <Component id="subComboBox" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
+                                                  <Component id="dateComboBox1" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="label4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="label6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace pref="17" max="32767" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Group type="102" alignment="0" attributes="0">
-                                                                  <Component id="hr" min="-2" pref="54" max="-2" attributes="0"/>
-                                                                  <EmptySpace max="-2" attributes="0"/>
-                                                                  <Component id="mint" min="-2" pref="50" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <Group type="102" alignment="0" attributes="0">
-                                                                  <Component id="hr1" max="32767" attributes="0"/>
-                                                                  <EmptySpace max="-2" attributes="0"/>
-                                                                  <Component id="mint1" min="-2" pref="50" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="hr" min="-2" pref="54" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="end1" pref="50" max="32767" attributes="0"/>
-                                                              <Component id="end" max="32767" attributes="0"/>
-                                                          </Group>
+                                                          <Component id="mint" min="-2" pref="50" max="-2" attributes="0"/>
                                                       </Group>
-                                                      <Group type="102" attributes="0">
-                                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                          <Component id="subComboBox" min="-2" pref="166" max="-2" attributes="0"/>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="hr1" max="32767" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <Component id="mint1" min="-2" pref="50" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="end1" pref="50" max="32767" attributes="0"/>
+                                                      <Component id="end" max="32767" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="184" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1308,32 +1356,31 @@
                                                   <Component id="label16" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="label4" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="32767" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="label6" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                                  <Component id="hr1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="mint1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="end1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                                      </Group>
+                                                      <Component id="label4" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                                           <Component id="end" alignment="3" min="-2" max="-2" attributes="0"/>
                                                           <Component id="mint" alignment="3" min="-2" max="-2" attributes="0"/>
                                                           <Component id="hr" alignment="3" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="label6" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                                          <Component id="hr1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="mint1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="end1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="subComboBox" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="subComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="2" attributes="0">
+                                              <Component id="dateComboBox1" alignment="2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel3" alignment="2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace pref="20" max="32767" attributes="0"/>
                                           <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -1345,6 +1392,9 @@
                                   <Properties>
                                     <Property name="text" type="java.lang.String" value="Add"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+                                  </Events>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel9">
                                   <Properties>
@@ -1503,6 +1553,32 @@
                                 <Component class="java.awt.Label" name="label6">
                                   <Properties>
                                     <Property name="text" type="java.lang.String" value="Ending Time"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JComboBox" name="dateComboBox1">
+                                  <Properties>
+                                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                      <StringArray count="7">
+                                        <StringItem index="0" value="Monday"/>
+                                        <StringItem index="1" value="Tuesday"/>
+                                        <StringItem index="2" value="Wednesday"/>
+                                        <StringItem index="3" value="Thursday"/>
+                                        <StringItem index="4" value="Friday"/>
+                                        <StringItem index="5" value="Saturday"/>
+                                        <StringItem index="6" value="Sunday"/>
+                                      </StringArray>
+                                    </Property>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                                  </AuxValues>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="jLabel3">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="12" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Date"/>
                                   </Properties>
                                 </Component>
                               </SubComponents>
