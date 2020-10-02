@@ -20,7 +20,7 @@ public class notAvailable extends javax.swing.JFrame {
     
     Connection con = null;
     PreparedStatement pst = null;
-    ResultSet result = null;
+    ResultSet result,rs = null;
 
     /**
      * Creates new form notAvailable
@@ -33,8 +33,8 @@ public class notAvailable extends javax.swing.JFrame {
         UpDateTable2();
         UpDateTable3();
         UpDateCombolec();
-        UpDateComboses();
-        UpDateComboGroup();  
+        UpDateComboGroup(); 
+        UpDateComboGroup1();  
         UpDateCombosubgroup();
         
     }
@@ -85,8 +85,7 @@ public class notAvailable extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-    }
-   
+    }   
     
     private void UpDateCombolec(){
         String sql = "select distinct name FROM lecture1";
@@ -103,13 +102,36 @@ public class notAvailable extends javax.swing.JFrame {
     }
     
     
-    private void UpDateComboses(){
+    private void UpDateComboses(String id){
+        int itemCount = sesComboBox.getItemCount();
+        
+        for(int i=0;i<itemCount;i++){
+            sesComboBox.removeItemAt(0);
+        }
+        
+        String sql = "select * FROM session1 where student_group='"+id+"'";
+        try{
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                  sesComboBox.addItem(rs.getString("subject") + " " + rs.getString("subject_code") + " \n"
+                        + rs.getString("tag") + " \n" + rs.getString("student_group") + " \n"
+                        + rs.getString("number_of_student") + "(" + rs.getString("duration") + ")");
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    private void UpDateComboGroup1(){
         String sql = "select distinct student_group FROM session1";
         try{
             pst = con.prepareStatement(sql);
             result = pst.executeQuery();
             while(result.next()){
-                sesComboBox.addItem(result.getString("student_group"));
+                groupComboBox2.addItem(result.getString("student_group"));
+
             }
         }
         catch(Exception e){
@@ -119,12 +141,14 @@ public class notAvailable extends javax.swing.JFrame {
     
     
     private void UpDateComboGroup(){
-        String sql = "select distinct group_no FROM groupNew";
+        String sql = "select distinct groupID FROM groupIdNew";
         try{
             pst = con.prepareStatement(sql);
             result = pst.executeQuery();
             while(result.next()){
-                groupComboBox.addItem(result.getString("group_no"));
+                groupComboBox.addItem(result.getString("groupID"));
+                groupComboBox1.addItem(result.getString("groupID"));
+
             }
         }
         catch(Exception e){
@@ -198,6 +222,8 @@ public class notAvailable extends javax.swing.JFrame {
         label12 = new java.awt.Label();
         dateComboBox2 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        groupComboBox2 = new javax.swing.JComboBox<>();
+        label22 = new java.awt.Label();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         notATable3 = new javax.swing.JTable();
@@ -234,6 +260,8 @@ public class notAvailable extends javax.swing.JFrame {
         label6 = new java.awt.Label();
         dateComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        groupComboBox1 = new javax.swing.JComboBox<>();
+        label21 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -468,6 +496,14 @@ public class notAvailable extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel4.setText("Date");
 
+        groupComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                groupComboBox2ActionPerformed(evt);
+            }
+        });
+
+        label22.setText("Group");
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -478,42 +514,56 @@ public class notAvailable extends javax.swing.JFrame {
                     .addComponent(label11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label18, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label18, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label22, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(dateComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(sesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel16Layout.createSequentialGroup()
-                                .addComponent(S1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(S2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel16Layout.createSequentialGroup()
-                                .addComponent(S4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(S5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(S6, 0, 50, Short.MAX_VALUE)
-                            .addComponent(S3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(sesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(groupComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel13)
-                .addContainerGap(184, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                .addContainerGap(111, Short.MAX_VALUE)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addComponent(S1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(S2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addComponent(S4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(S5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(S6, 0, 50, Short.MAX_VALUE)
+                    .addComponent(S3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton8)
                 .addGap(10, 10, 10))
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel13)
+                .addContainerGap(184, Short.MAX_VALUE))
         );
+
+        jPanel16Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {S2, S5});
+
+        jPanel16Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {S3, S6});
+
+        jPanel16Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {S1, S4});
+
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel13)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(groupComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addComponent(label18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -536,7 +586,7 @@ public class notAvailable extends javax.swing.JFrame {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(dateComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton8)
                 .addContainerGap())
         );
@@ -561,7 +611,7 @@ public class notAvailable extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Session", jPanel8);
@@ -784,6 +834,14 @@ public class notAvailable extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Date");
 
+        groupComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                groupComboBox1ActionPerformed(evt);
+            }
+        });
+
+        label21.setText("Group");
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
@@ -823,13 +881,23 @@ public class notAvailable extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton6)
                 .addGap(10, 10, 10))
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label21, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(groupComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(groupComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(label16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -852,7 +920,7 @@ public class notAvailable extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(dateComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton6)
                 .addContainerGap())
         );
@@ -876,8 +944,8 @@ public class notAvailable extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Subgroup", jPanel7);
@@ -1033,6 +1101,7 @@ public class notAvailable extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         String sql ="insert into notAvailable(session,time,date) values(?,?,?)";
+        String gp = groupComboBox2.getSelectedItem().toString();
         String lec = sesComboBox.getSelectedItem().toString();
         String s_hours = S1.getSelectedItem().toString();
         String s_mint = S2.getSelectedItem().toString();
@@ -1044,7 +1113,7 @@ public class notAvailable extends javax.swing.JFrame {
         
         try{
             pst = con.prepareStatement(sql);
-            pst.setString(1,lec);
+            pst.setString(1,lec+"."+gp);
             pst.setString(2,s_hours+":"+s_mint+" "+s_end+" - "+e_hours+":"+e_mint+" "+e_end);
             pst.setString(3,date);
 
@@ -1085,6 +1154,7 @@ public class notAvailable extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         String sql ="insert into notAvailable(subgroup,time,date) values(?,?,?)";
+        String gp = groupComboBox1.getSelectedItem().toString();
         String lec = subComboBox.getSelectedItem().toString();
         String s_hours = hr.getSelectedItem().toString();
         String s_mint = mint.getSelectedItem().toString();
@@ -1096,7 +1166,7 @@ public class notAvailable extends javax.swing.JFrame {
         
         try{
             pst = con.prepareStatement(sql);
-            pst.setString(1,lec);
+            pst.setString(1,gp+"."+lec);
             pst.setString(2,s_hours+":"+s_mint+" "+s_end+" - "+e_hours+":"+e_mint+" "+e_end);
             pst.setString(3,date);
 
@@ -1107,6 +1177,15 @@ public class notAvailable extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void groupComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_groupComboBox1ActionPerformed
+
+    private void groupComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupComboBox2ActionPerformed
+        // TODO add your handling code here:
+        UpDateComboses(groupComboBox2.getSelectedItem().toString());
+    }//GEN-LAST:event_groupComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1169,6 +1248,8 @@ public class notAvailable extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> end;
     private javax.swing.JComboBox<String> end1;
     private javax.swing.JComboBox<String> groupComboBox;
+    private javax.swing.JComboBox<String> groupComboBox1;
+    private javax.swing.JComboBox<String> groupComboBox2;
     private javax.swing.JComboBox<String> hr;
     private javax.swing.JComboBox<String> hr1;
     private javax.swing.JButton jButton6;
@@ -1211,6 +1292,8 @@ public class notAvailable extends javax.swing.JFrame {
     private java.awt.Label label18;
     private java.awt.Label label19;
     private java.awt.Label label20;
+    private java.awt.Label label21;
+    private java.awt.Label label22;
     private java.awt.Label label4;
     private java.awt.Label label6;
     private java.awt.Label label8;
