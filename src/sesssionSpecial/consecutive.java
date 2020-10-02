@@ -19,8 +19,8 @@ import net.proteanit.sql.DbUtils;
 public class consecutive extends javax.swing.JFrame {
 
     Connection con = null;
-    PreparedStatement pst = null;
-    ResultSet result = null;
+    PreparedStatement pst, p = null;
+    ResultSet result, r = null;
     /**
      * Creates new form consecutive
      */
@@ -29,6 +29,7 @@ public class consecutive extends javax.swing.JFrame {
         con = DbConnection.ConnectDb();
         UpDateTable();
         UpDateComboSubject();
+        UpDateComboGroup();
         
     }
     
@@ -46,28 +47,69 @@ public class consecutive extends javax.swing.JFrame {
     
     private void UpDateComboSubject(){
         String sql = "SELECT distinct subject_code FROM session1";
+
         try{
             pst = con.prepareStatement(sql);
             result = pst.executeQuery();
             while(result.next()){
                 subjectComboBox.addItem(result.getString("subject_code"));
-                
             }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
-        }
+        }        
+        
     }
     
-    private void UpDateComboLec(String subjectCode){
-        int itemCount = LecComboBox.getItemCount();                
-        String sql = "select session_id FROM session1 where tag = 'lecture' AND subject_code= '"+subjectCode+"'";
+    private void UpDateComboGroup(){
+        String sql = "SELECT distinct student_group FROM session1";
+
         try{
             pst = con.prepareStatement(sql);
             result = pst.executeQuery();
             while(result.next()){
-                LecComboBox.addItem(result.getString("session_id"));
+                gpComboBox.addItem(result.getString("student_group"));
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }        
+        
+    }
+    
+    
+    private void UpDatelecture(String sesID){
+ 
+        String sql = "select distinct lectureName FROM sessionLectures where sessionID = '"+sesID+"'";
+        
+        try{
+            pst = con.prepareStatement(sql);
+            result = pst.executeQuery();
+            String name = "";
+            while(result.next()){
+                name = name+""+ result.getString("lectureName")+", ";
+            }
+            lecText.setText(name);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }
+    
+    private void UpDateComboLec(String gp){
+        int itemCount = LecComboBox.getItemCount();                
+        String sql = "select * FROM session1 where tag = 'lecture' AND student_group = '"+gp+"'";
+
+        String lecturer = lecText.getText().toString();
+        
+        try{
+            pst = con.prepareStatement(sql);
+            result = pst.executeQuery();
+            while(result.next()){
+                LecComboBox.addItem(lecturer+" "+result.getString("subject")+" "+result.getString("subject_code")+" \n"+result.getString("tag")+" \n"+result.getString("student_group")+" \n"+result.getString("number_of_student")+"("+result.getString("duration")+")");
                 LecComboBox.addItem("none");
+                
             }
         }
         catch(Exception e){
@@ -78,14 +120,17 @@ public class consecutive extends javax.swing.JFrame {
         }
     }
     
-    private void UpDateComboTute(String subjectCode){
+    private void UpDateComboTute(String gp){
         int itemCount = TuteComboBox.getItemCount();
-        String sql = "select session_id FROM session1 where tag = 'tute' AND subject_code= '"+subjectCode+"'";
+        String sql = "select * FROM session1 where tag = 'tute' AND student_group = '"+gp+"'";
+        
+        String lecturer = lecText.getText().toString();
+        
         try{
             pst = con.prepareStatement(sql);
             result = pst.executeQuery();
             while(result.next()){
-                TuteComboBox.addItem(result.getString("session_id"));
+                TuteComboBox.addItem(lecturer+" "+result.getString("subject")+" "+result.getString("subject_code")+" \n"+result.getString("tag")+" \n"+result.getString("student_group")+" \n"+result.getString("number_of_student")+"("+result.getString("duration")+")");
                 TuteComboBox.addItem("none");
             }
         }
@@ -96,27 +141,6 @@ public class consecutive extends javax.swing.JFrame {
             TuteComboBox.removeItemAt(0);
          }
     }
-    
-    private void UpDateComboLab(String subjectCode){
-        int itemCount = LabComboBox.getItemCount();
-        String sql = "select * FROM session1 where tag = 'labs' AND subject_code= '"+subjectCode+"'";
-        try{
-            pst = con.prepareStatement(sql);
-            result = pst.executeQuery();
-            while(result.next()){
-                LabComboBox.addItem(result.getString("session_id"));
-                LabComboBox.addItem("none");
-            }
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-        }
-        for(int i=0;i<itemCount;i++){
-            LabComboBox.removeItemAt(0);
-         }
-    }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -131,7 +155,6 @@ public class consecutive extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         conTable = new javax.swing.JTable();
@@ -140,15 +163,18 @@ public class consecutive extends javax.swing.JFrame {
         subjectComboBox = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        gpComboBox = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         LecComboBox = new javax.swing.JComboBox<>();
         TuteComboBox = new javax.swing.JComboBox<>();
-        LabComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        lecText = new javax.swing.JTextField();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -162,16 +188,6 @@ public class consecutive extends javax.swing.JFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-
-        jToggleButton1.setBackground(new java.awt.Color(0, 102, 102));
-        jToggleButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton1.setText("Consecutive Session");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
 
         conTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -187,7 +203,18 @@ public class consecutive extends javax.swing.JFrame {
         jScrollPane1.setViewportView(conTable);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Select Subject");
+        jLabel5.setText("Select Details");
+
+        subjectComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                subjectComboBoxMouseEntered(evt);
+            }
+        });
+        subjectComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subjectComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel6.setText("Subject");
@@ -199,21 +226,42 @@ public class consecutive extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel8.setText("Group");
+
+        gpComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gpComboBoxMouseEntered(evt);
+            }
+        });
+        gpComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gpComboBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addContainerGap()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(subjectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(subjectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(gpComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,9 +272,13 @@ public class consecutive extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(subjectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(gpComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         LecComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "none" }));
@@ -243,13 +295,9 @@ public class consecutive extends javax.swing.JFrame {
             }
         });
 
-        LabComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "none" }));
-
         jLabel1.setText("Lecture");
 
         jLabel2.setText("Tutorial");
-
-        jLabel3.setText("Lab");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Select Session");
@@ -258,6 +306,14 @@ public class consecutive extends javax.swing.JFrame {
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Lecturer");
+
+        lecText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lecTextActionPerformed(evt);
             }
         });
 
@@ -272,21 +328,26 @@ public class consecutive extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addButton)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(LecComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(LabComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(TuteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LecComboBox, 0, 115, Short.MAX_VALUE)
+                            .addComponent(TuteComboBox, 0, 89, Short.MAX_VALUE)
+                            .addComponent(lecText))
                         .addGap(19, 19, 19))))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {LabComboBox, LecComboBox, TuteComboBox});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {LecComboBox, TuteComboBox});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,20 +356,30 @@ public class consecutive extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(lecText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LecComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TuteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addButton)
-                .addGap(34, 34, 34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
+
+        jToggleButton1.setBackground(new java.awt.Color(0, 102, 102));
+        jToggleButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jToggleButton1.setText("Consecutive Session");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -317,25 +388,28 @@ public class consecutive extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 17, Short.MAX_VALUE))
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 64, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -344,17 +418,11 @@ public class consecutive extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -413,26 +481,26 @@ public class consecutive extends javax.swing.JFrame {
     }//GEN-LAST:event_LecComboBoxActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        UpDateComboLec(subjectComboBox.getSelectedItem().toString());        
-        UpDateComboTute(subjectComboBox.getSelectedItem().toString());
-        UpDateComboLab(subjectComboBox.getSelectedItem().toString());
+        // TODO add your handling code here:        
+        UpDateComboLec(gpComboBox.getSelectedItem().toString());        
+        UpDateComboTute(gpComboBox.getSelectedItem().toString());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        String sql = "INSERT INTO consecutive(subject_code,lecture,tutorial,lab) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO consecutive(group_id,subject_code,lecture,tutorial) VALUES(?,?,?,?)";
 
         try{
             pst = con.prepareStatement(sql);
+            String gp = gpComboBox.getSelectedItem().toString();
             String sub = subjectComboBox.getSelectedItem().toString();
             String lec = LecComboBox.getSelectedItem().toString();
             String tute = TuteComboBox.getSelectedItem().toString();
-            String lab = LabComboBox.getSelectedItem().toString();
-            pst.setString(1,sub);            
-            pst.setString(2,lec);            
-            pst.setString(3,tute);
-            pst.setString(4,lab);
+            pst.setString(1,gp);            
+            pst.setString(2,sub);            
+            pst.setString(3,lec);            
+            pst.setString(4,tute);
+            
 
             pst.execute();
             JOptionPane.showMessageDialog(null, "Inserted Successfully");
@@ -442,6 +510,39 @@ public class consecutive extends javax.swing.JFrame {
         }
         UpDateTable();
     }//GEN-LAST:event_addButtonActionPerformed
+
+    private void subjectComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectComboBoxActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_subjectComboBoxActionPerformed
+
+    private void subjectComboBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subjectComboBoxMouseEntered
+        // TODO add your handling code here:
+        String sql2 = "SELECT session_id FROM session1";
+
+        try{
+            p = con.prepareStatement(sql2);
+            r = p.executeQuery();
+            while(r.next()){                
+                UpDatelecture(r.getString("session_id"));
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_subjectComboBoxMouseEntered
+
+    private void lecTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lecTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lecTextActionPerformed
+
+    private void gpComboBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gpComboBoxMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gpComboBoxMouseEntered
+
+    private void gpComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gpComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gpComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -479,19 +580,20 @@ public class consecutive extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> LabComboBox;
     private javax.swing.JComboBox<String> LecComboBox;
     private javax.swing.JComboBox<String> TuteComboBox;
     private javax.swing.JButton addButton;
     private javax.swing.JTable conTable;
+    private javax.swing.JComboBox<String> gpComboBox;
     private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -500,6 +602,7 @@ public class consecutive extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTextField lecText;
     private javax.swing.JComboBox<String> subjectComboBox;
     // End of variables declaration//GEN-END:variables
 }

@@ -88,9 +88,6 @@ public class AddTimeSlot extends javax.swing.JFrame {
                 subject_code.setText("("+subjectIDData+")");
 //                noOfStudent.setText(noOfStudentData);
                 duration.setText("("+durationData+")");
-                
-                
-                
             
         }
         catch(Exception e){
@@ -98,7 +95,7 @@ public class AddTimeSlot extends javax.swing.JFrame {
         }
     }
     
-         private void setSessionLectureDetails(String sid){
+    private void setSessionLectureDetails(String sid){
         try{
             String sql ="select * from sessionLectures where sessionID ='"+sid+"'";
             
@@ -119,12 +116,6 @@ public class AddTimeSlot extends javax.swing.JFrame {
         }
     }
          
-         //__________________________________________________________________
-    
-    
-   
-    
-   
     
    private void setSeissionCombo(String groupSearch){
      

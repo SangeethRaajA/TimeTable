@@ -356,7 +356,7 @@ public class subjects extends javax.swing.JFrame {
 
     private void table2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseClicked
         // TODO add your handling code here:
-         int row = table2.getSelectedRow();
+        int row = table2.getSelectedRow();
         String selection = table2.getModel().getValueAt(row,0).toString();
         String sql = "select * from subject where id = " + selection;
         
