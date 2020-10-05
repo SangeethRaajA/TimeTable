@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+import sesssionSpecial.sessionDashboard;
 
 /**
  *
@@ -444,6 +445,10 @@ public class group extends javax.swing.JFrame {
 
     private void jToggleButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton17ActionPerformed
         // TODO add your handling code here:
+        sessionDashboard s = new sessionDashboard();
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dispose();
     }//GEN-LAST:event_jToggleButton17ActionPerformed
 
     private void jToggleButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton18ActionPerformed
@@ -513,6 +518,7 @@ public class group extends javax.swing.JFrame {
     private java.awt.Button HomeBtn;
     private javax.swing.JTextField group_lable;
     private javax.swing.JTable group_table;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
@@ -526,6 +532,12 @@ public class group extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton16;
     private javax.swing.JToggleButton jToggleButton17;
     private javax.swing.JToggleButton jToggleButton18;
+    private javax.swing.JToggleButton jToggleButton19;
+    private javax.swing.JToggleButton jToggleButton20;
+    private javax.swing.JToggleButton jToggleButton21;
+    private javax.swing.JToggleButton jToggleButton22;
+    private javax.swing.JToggleButton jToggleButton23;
+    private javax.swing.JToggleButton jToggleButton24;
     private javax.swing.JButton view_lecture_sub_menu4;
     // End of variables declaration//GEN-END:variables
 }

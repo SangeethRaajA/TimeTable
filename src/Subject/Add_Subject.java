@@ -7,6 +7,8 @@
 package Subject;
 
 import Service.DbConnection;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -67,8 +69,9 @@ public class Add_Subject extends javax.swing.JFrame {
         s_add_add_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 204, 255));
 
-        jPanel1.setBackground(java.awt.Color.gray);
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
@@ -93,6 +96,8 @@ public class Add_Subject extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
+        jPanel2.setBackground(new java.awt.Color(65, 105, 170));
+
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel6.setText("Number Of  Hours :-");
@@ -110,10 +115,20 @@ public class Add_Subject extends javax.swing.JFrame {
                 s_add_lecture_hoursActionPerformed(evt);
             }
         });
+        s_add_lecture_hours.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                s_add_lecture_hoursKeyPressed(evt);
+            }
+        });
 
         s_add_tutorial_hours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 s_add_tutorial_hoursActionPerformed(evt);
+            }
+        });
+        s_add_tutorial_hours.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                s_add_tutorial_hoursKeyPressed(evt);
             }
         });
 
@@ -122,10 +137,20 @@ public class Add_Subject extends javax.swing.JFrame {
                 s_add_lab_hoursActionPerformed(evt);
             }
         });
+        s_add_lab_hours.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                s_add_lab_hoursKeyPressed(evt);
+            }
+        });
 
         s_add_evaluation_hours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 s_add_evaluation_hoursActionPerformed(evt);
+            }
+        });
+        s_add_evaluation_hours.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                s_add_evaluation_hoursKeyPressed(evt);
             }
         });
 
@@ -195,12 +220,22 @@ public class Add_Subject extends javax.swing.JFrame {
                 s_add_offer_yearActionPerformed(evt);
             }
         });
+        s_add_offer_year.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                s_add_offer_yearKeyPressed(evt);
+            }
+        });
 
         jLabel3.setText("Offered Semester :");
 
         s_add_offer_semester.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 s_add_offer_semesterActionPerformed(evt);
+            }
+        });
+        s_add_offer_semester.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                s_add_offer_semesterKeyPressed(evt);
             }
         });
 
@@ -268,6 +303,11 @@ public class Add_Subject extends javax.swing.JFrame {
         );
 
         s_add_cancel_btn.setText("Cancel");
+        s_add_cancel_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                s_add_cancel_btnActionPerformed(evt);
+            }
+        });
 
         s_add_add_btn.setText("Add");
         s_add_add_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -321,12 +361,12 @@ public class Add_Subject extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addContainerGap(295, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(97, 97, 97)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(98, Short.MAX_VALUE)))
+                    .addContainerGap(35, Short.MAX_VALUE)))
         );
 
         pack();
@@ -398,6 +438,95 @@ public class Add_Subject extends javax.swing.JFrame {
        }
     
     }//GEN-LAST:event_s_add_add_btnActionPerformed
+
+    private void s_add_offer_yearKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_add_offer_yearKeyPressed
+        // TODO add your handling code here:
+         int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACK_SPACE)){
+            s_add_offer_year.setEditable(true);
+            s_add_offer_year.setBackground(Color.white);
+        }
+        else{
+            s_add_offer_year.setEditable(false);
+            s_add_offer_year.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_s_add_offer_yearKeyPressed
+
+    private void s_add_offer_semesterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_add_offer_semesterKeyPressed
+        // TODO add your handling code here:
+        int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACK_SPACE)){
+            s_add_offer_semester.setEditable(true);
+            s_add_offer_semester.setBackground(Color.white);
+        }
+        else{
+            s_add_offer_semester.setEditable(false);
+            s_add_offer_semester.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_s_add_offer_semesterKeyPressed
+
+    private void s_add_lecture_hoursKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_add_lecture_hoursKeyPressed
+        // TODO add your handling code here:
+         int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACK_SPACE)){
+            s_add_lecture_hours.setEditable(true);
+            s_add_lecture_hours.setBackground(Color.white);
+        }
+        else{
+            s_add_lecture_hours.setEditable(false);
+            s_add_lecture_hours.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_s_add_lecture_hoursKeyPressed
+
+    private void s_add_tutorial_hoursKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_add_tutorial_hoursKeyPressed
+        // TODO add your handling code here:
+           int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACK_SPACE)){
+            s_add_tutorial_hours.setEditable(true);
+            s_add_tutorial_hours.setBackground(Color.white);
+        }
+        else{
+            s_add_tutorial_hours.setEditable(false);
+            s_add_tutorial_hours.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_s_add_tutorial_hoursKeyPressed
+
+    private void s_add_lab_hoursKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_add_lab_hoursKeyPressed
+        // TODO add your handling code here:
+             int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACK_SPACE)){
+            s_add_lab_hours.setEditable(true);
+            s_add_lab_hours.setBackground(Color.white);
+        }
+        else{
+            s_add_lab_hours.setEditable(false);
+            s_add_lab_hours.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_s_add_lab_hoursKeyPressed
+
+    private void s_add_evaluation_hoursKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_add_evaluation_hoursKeyPressed
+        // TODO add your handling code here:
+                   int key = evt.getKeyCode();
+        
+        if((key>=evt.VK_0 && key<=evt.VK_9) || (key>=evt.VK_NUMPAD0 && key<=evt.VK_NUMPAD9) || (key==KeyEvent.VK_BACK_SPACE)){
+            s_add_evaluation_hours.setEditable(true);
+            s_add_evaluation_hours.setBackground(Color.white);
+        }
+        else{
+            s_add_evaluation_hours.setEditable(false);
+            s_add_evaluation_hours.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_s_add_evaluation_hoursKeyPressed
+
+    private void s_add_cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_add_cancel_btnActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_s_add_cancel_btnActionPerformed
 
     /**
      * @param args the command line arguments

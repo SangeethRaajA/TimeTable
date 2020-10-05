@@ -5,10 +5,13 @@
  */
 package sesssionSpecial;
 
+import Commen.SubMenu;
 import Service.DbConnection;
+import Student.studentDashboard;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
@@ -181,6 +184,12 @@ public class notAvailable extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        jToggleButton14 = new javax.swing.JToggleButton();
+        jToggleButton13 = new javax.swing.JToggleButton();
+        jToggleButton16 = new javax.swing.JToggleButton();
+        jToggleButton18 = new javax.swing.JToggleButton();
+        jToggleButton17 = new javax.swing.JToggleButton();
+        jToggleButton15 = new javax.swing.JToggleButton();
         jPanel3 = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jPanel4 = new javax.swing.JPanel();
@@ -204,6 +213,8 @@ public class notAvailable extends javax.swing.JFrame {
         label20 = new java.awt.Label();
         dateComboBox3 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        HomeBtn = new java.awt.Button();
+        BackBtn = new java.awt.Button();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         notATable2 = new javax.swing.JTable();
@@ -265,16 +276,90 @@ public class notAvailable extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jToggleButton14.setText("HOME");
+        jToggleButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton14ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton13.setText("LECTURER");
+        jToggleButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton13ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton16.setText("STUDENT");
+        jToggleButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton16ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton18.setText("LOCATION");
+        jToggleButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton18ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton17.setText("SESSION");
+        jToggleButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton17ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton15.setText("TIMETABLE");
+        jToggleButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton15ActionPerformed(evt);
+            }
+        });
+
+        jDesktopPane1.setLayer(jToggleButton14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jToggleButton13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jToggleButton16, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jToggleButton18, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jToggleButton17, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jToggleButton15, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 227, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jToggleButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jToggleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jToggleButton15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jToggleButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jToggleButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jToggleButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 469, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jToggleButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jToggleButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jToggleButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jToggleButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(jToggleButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jToggleButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        jDesktopPane1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jToggleButton13, jToggleButton14, jToggleButton15, jToggleButton16, jToggleButton17, jToggleButton18});
 
         jToggleButton1.setBackground(new java.awt.Color(0, 102, 102));
         jToggleButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -415,6 +500,15 @@ public class notAvailable extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        HomeBtn.setLabel("Home");
+
+        BackBtn.setLabel("Back");
+        BackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -425,7 +519,12 @@ public class notAvailable extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(HomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -435,7 +534,11 @@ public class notAvailable extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(HomeBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BackBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Lecturer", jPanel2);
@@ -1013,8 +1116,8 @@ public class notAvailable extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1187,6 +1290,50 @@ public class notAvailable extends javax.swing.JFrame {
         UpDateComboses(groupComboBox2.getSelectedItem().toString());
     }//GEN-LAST:event_groupComboBox2ActionPerformed
 
+    private void jToggleButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton14ActionPerformed
+
+    private void jToggleButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton13ActionPerformed
+        // TODO add your handling code here:
+        SubMenu s = new SubMenu();
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dispose();
+    }//GEN-LAST:event_jToggleButton13ActionPerformed
+
+    private void jToggleButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton16ActionPerformed
+        // TODO add your handling code here:
+        studentDashboard s = new studentDashboard();
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dispose();
+    }//GEN-LAST:event_jToggleButton16ActionPerformed
+
+    private void jToggleButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton18ActionPerformed
+
+    private void jToggleButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton17ActionPerformed
+        // TODO add your handling code here:
+        sessionDashboard s = new sessionDashboard();
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dispose();
+    }//GEN-LAST:event_jToggleButton17ActionPerformed
+
+    private void jToggleButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton15ActionPerformed
+
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
+        // TODO add your handling code here:
+        sessionDashboard s = new sessionDashboard();
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dispose();
+    }//GEN-LAST:event_BackBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1223,12 +1370,14 @@ public class notAvailable extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button BackBtn;
     private javax.swing.JComboBox<String> G1;
     private javax.swing.JComboBox<String> G2;
     private javax.swing.JComboBox<String> G3;
     private javax.swing.JComboBox<String> G4;
     private javax.swing.JComboBox<String> G5;
     private javax.swing.JComboBox<String> G6;
+    private java.awt.Button HomeBtn;
     private javax.swing.JComboBox<String> L1;
     private javax.swing.JComboBox<String> L2;
     private javax.swing.JComboBox<String> L3;
@@ -1283,6 +1432,12 @@ public class notAvailable extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton13;
+    private javax.swing.JToggleButton jToggleButton14;
+    private javax.swing.JToggleButton jToggleButton15;
+    private javax.swing.JToggleButton jToggleButton16;
+    private javax.swing.JToggleButton jToggleButton17;
+    private javax.swing.JToggleButton jToggleButton18;
     private java.awt.Label label10;
     private java.awt.Label label11;
     private java.awt.Label label12;
