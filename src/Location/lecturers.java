@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package timetablemanagement;
+package Location;
 
+import Service.DbConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +28,7 @@ public class lecturers extends javax.swing.JFrame {
      */
     public lecturers() {
         initComponents();
-        conn = DbConn.ConnecrDb ();
+       conn = DbConnection.ConnectDb();
         show_location();
         try{
         String sql = "select * from lecturer1";

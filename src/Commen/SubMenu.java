@@ -7,10 +7,13 @@ package Commen;
 
 import Lecture.Add_Lecture;
 import Lecture.View_Lecture;
+import SpecialRoomAllocation.NavSpl;
 import Student.studentDashboard;
 import Subject.Add_Subject;
 import Subject.View_Subject;
 import javax.swing.JFrame;
+import sesssionSpecial.sessionDashboard;
+import workingdays.TimeTableSystemManagementMain;
 /**
  *
  * @author vivekjeevanarajh
@@ -352,6 +355,10 @@ public class SubMenu extends javax.swing.JFrame {
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // TODO add your handling code here:
+        TimeTableSystemManagementMain s = new TimeTableSystemManagementMain();
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dispose();
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
@@ -364,10 +371,19 @@ public class SubMenu extends javax.swing.JFrame {
 
     private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
         // TODO add your handling code here:
+        sessionDashboard s = new sessionDashboard();
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dispose();
+        
     }//GEN-LAST:event_jToggleButton5ActionPerformed
 
     private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
         // TODO add your handling code here:
+        NavSpl s = new NavSpl();
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dispose();
     }//GEN-LAST:event_jToggleButton6ActionPerformed
 
     private void view_lecture_sub_menu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_lecture_sub_menu4ActionPerformed

@@ -41,6 +41,8 @@ public class Edit_Lecture extends javax.swing.JFrame {
         e_edit_level.setSelectedItem(level);
         edit_id.setText(id);
         
+        e_edit_id.setEditable(false);
+        
     }
 
     /**
@@ -77,8 +79,10 @@ public class Edit_Lecture extends javax.swing.JFrame {
         e_edit_cancel_add_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 204, 255));
+        setForeground(new java.awt.Color(102, 204, 255));
 
-        jPanel1.setBackground(java.awt.Color.gray);
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
@@ -112,6 +116,8 @@ public class Edit_Lecture extends javax.swing.JFrame {
                     .addComponent(edit_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
+
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel2.setText("Name :");
 
@@ -148,6 +154,11 @@ public class Edit_Lecture extends javax.swing.JFrame {
         });
 
         e_edit_level.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professor", "Assistant Professor", "Senior Lecturer(HG) ", "Senior Lecturer", "Lecturer", "Assistant Lecturer", "Instructors" }));
+        e_edit_level.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                e_edit_levelItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -232,7 +243,7 @@ public class Edit_Lecture extends javax.swing.JFrame {
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(65, 105, 170));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         e_edit_btn.setText("EDIT");
@@ -254,9 +265,9 @@ public class Edit_Lecture extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
                 .addComponent(e_edit_cancel_add_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(e_edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
@@ -275,27 +286,29 @@ public class Edit_Lecture extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(87, 87, 87)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(88, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(108, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(93, 93, 93)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(93, 93, 93)))
+                    .addContainerGap(161, Short.MAX_VALUE)))
         );
 
         pack();
@@ -345,6 +358,51 @@ public class Edit_Lecture extends javax.swing.JFrame {
     private void edit_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edit_idActionPerformed
+
+    private void e_edit_levelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_e_edit_levelItemStateChanged
+        // TODO add your handling code here:
+        
+          String rank = "1";
+        
+        String Level = e_edit_level.getSelectedItem().toString();
+        System.out.println(Level);
+        switch(Level){
+        
+            case "Professor":{
+                rank="1";
+            }
+            break;
+            case "Assistant Professor":{
+                rank="2";
+            }
+            
+            break;
+            case "Lecturer":{
+                rank="5";
+            }
+            break;
+            case "Instructors":{
+                rank="7";
+            }
+            break;
+            case "Senior Lecturer":{
+                rank="4";
+            }
+            break;
+            
+            case "Assistant Lecturer":{
+                rank="6";
+            }
+            break;
+            default:{
+                rank="3";
+            }
+        };
+        String EmpID = e_edit_id.getText().toString();
+        
+        
+        e_edit_rank.setText(rank+"."+EmpID);
+    }//GEN-LAST:event_e_edit_levelItemStateChanged
 
     /**
      * @param args the command line arguments

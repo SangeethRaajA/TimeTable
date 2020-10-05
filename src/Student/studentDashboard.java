@@ -6,14 +6,10 @@
 package Student;
 
 import Commen.SubMenu;
-import Student.year;
-import Student.programme;
-import Student.group;
-import Student.groupID;
-import Student.subgroupID;
-import Student.subgroup;
-import Student.tag;
+import SpecialRoomAllocation.NavSpl;
 import javax.swing.JFrame;
+import sesssionSpecial.sessionDashboard;
+import workingdays.TimeTableSystemManagementMain;
 
 
 /**
@@ -374,6 +370,10 @@ public class studentDashboard extends javax.swing.JFrame {
 
     private void jToggleButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton15ActionPerformed
         // TODO add your handling code here:
+        TimeTableSystemManagementMain s = new TimeTableSystemManagementMain();
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dispose();
     }//GEN-LAST:event_jToggleButton15ActionPerformed
 
     private void jToggleButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton16ActionPerformed
@@ -386,10 +386,18 @@ public class studentDashboard extends javax.swing.JFrame {
 
     private void jToggleButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton17ActionPerformed
         // TODO add your handling code here:
+        sessionDashboard s = new sessionDashboard();
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dispose();
     }//GEN-LAST:event_jToggleButton17ActionPerformed
 
     private void jToggleButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton18ActionPerformed
         // TODO add your handling code here:
+        NavSpl s = new NavSpl();
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dispose();
     }//GEN-LAST:event_jToggleButton18ActionPerformed
 
     /**
